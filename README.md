@@ -1,5 +1,5 @@
 # The Impact of AI Recommendation Systems on Amazon Product Reviews
-SUM26001 Final Group Project
+**Course:** SUM26001 Final Group Project
 
 ## 1. Project Description
 ### Problem Statement
@@ -30,12 +30,14 @@ Key lesson: Dataset variable completeness directly restricts research precision;
    - Organize project materials, assist report formatting & proofreading
 
 ## 3. Core File Links in Repository
-- Final rendered report PDF: ./project_report.pdf
-- Quarto source file for generating PDF: ./analysis_report.qmd
+
+- Final rendered report PDF: [report/project.pdf](report/project.pdf)
+- Quarto source file for generating PDF: [report/project.qmd](report/project.qmd)
 
 ## 4. Repository File Structure Overview
-- *.py: All data cleaning, descriptive statistics, t-test and correlation analysis code
-- *.qmd: Quarto report source file
-- project_report.pdf: Exported final course report
-- .gitignore: Standard ignore file for Quarto & Python cache files
-- README.md: Project introduction & submission specification document
+
+- analysis.py: Python code for data preprocessing and statistical analysis
+- report/project.qmd: Quarto source file
+- report/project.pdf: Final rendered report
+- .gitignore: Ignore rules for Quarto, Python cache, and datasets
+- README.md: Project overview and submission guide
