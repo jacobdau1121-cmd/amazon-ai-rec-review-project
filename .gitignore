@@ -1,41 +1,21 @@
-# 大数据集
-data/*.zip
-data/*.tsv
-data/*.csv
-data/*.parquet
+# Large datasets
+data/
 
-# VSCode临时文件
-.vscode/
-*.crswap
-
-# 系统文件
-.DS_Store
-Thumbs.db
-
-# 临时文件
-*.log
-*.tmp
-.cache/
-_book/
-# Quarto预览/渲染生成的缓存文件
-*_files/
-*_cache/
-.quarto/
-.quarto_preview/
-_freeze/
-*.csv
-*.docx
-# Quarto/Jupyter生成的临时笔记文件
-*.quarto_ipynb
-*.quarto_ipynb_*
 # Python
 __pycache__/
 *.pyc
 .venv/
 venv/
 
-# 忽略大型数据
-data/
+# VS Code
+.vscode/
 
-# Quarto 输出（可按需要）
+# Quarto
+.quarto/
 report/project_files/
+
+# Temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
