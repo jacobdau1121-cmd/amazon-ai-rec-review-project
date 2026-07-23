@@ -26,7 +26,7 @@ AI recommendation systems are changing the way users select products and make pu
 
 Although recommendation algorithms are now widespread, a key question remains: for products pushed by AI, will user feedback and evaluations take precedence over non-AI-recommended products? The star rating of a product is a core indicator of user satisfaction and product quality. Establishing a link between AI recommendations and user ratings allows for an intuitive evaluation of the actual effectiveness of recommendation systems.
 
-Based on this, our project leveraged Amazon user review datasets to explore whether AI recommendation systems affect user ratings of products. It specifically compares the average star ratings of AI-recommended and non-recommended products, the number of useful votes, and examines whether there are statistical differences between the two sets of data. And the result will be showed below:
+Based on this, our project leveraged Amazon user review datasets to explore whether AI recommendation systems affect user ratings of products. It specifically compares the average star ratings of AI-recommended and non-recommended products, the number of useful votes, and examines whether there are statistical differences between the two sets of data. And the result will be showed below: 
 
 > **Does AI recommendation positively influence customer ratings on Amazon?**
 
