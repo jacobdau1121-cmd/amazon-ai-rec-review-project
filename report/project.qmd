@@ -1,0 +1,287 @@
+---
+title: "The Impact of AI Recommendation Systems on Amazon Product Reviews"
+author:
+  - Dou Yuhan
+  - Yang Haoyuxuan
+date: today
+
+format:
+  typst:
+    toc: true
+    number-sections: true
+
+execute:
+  echo: false
+  warning: false
+  message: false
+
+bibliography: references.bib
+---
+
+# Introduction
+
+Artificial intelligence has a tremendous impact on various industries in today's era. As a development project in China's early internet era, e-commerce platforms have had an undeniable impact on artificial intelligence technology. AI technology is now widely used in internet streaming and other areas, greatly influencing online consumers' decision-making[1]. International online shopping platforms like Amazon heavily rely on AI systems to customize suggestion pages tailored to users' purchasing habits, while simultaneously pushing products and promoting products to improve overall purchasing efficiency.
+
+AI recommendation systems are changing the way users select products and make purchasing decisions: consumers don't need to search for a large number of products themselves; AI can match user preferences and recommend suitable products. As a result, AI technology has made a significant contribution to improving user satisfaction and driving sales on e-commerce platforms.
+
+Although recommendation algorithms are now widespread, a key question remains: for products pushed by AI, will user feedback and evaluations take precedence over non-AI-recommended products? The star rating of a product is a core indicator of user satisfaction and product quality. Establishing a link between AI recommendations and user ratings allows for an intuitive evaluation of the actual effectiveness of recommendation systems.
+
+Based on this, our project leveraged Amazon user review datasets to explore whether AI recommendation systems affect user ratings of products. It specifically compares the average star ratings of AI-recommended and non-recommended products, the number of useful votes, and examines whether there are statistical differences between the two sets of data.
+
+> **Does AI recommendation positively influence customer ratings on Amazon?**
+
+# Data Source
+
+## Dataset
+
+The dataset used in this project is the Amazon Customer Reviews Dataset, which provides large-scale customer review information including ratings and helpful votes [@mcauley2023amazon].
+
+The original dataset contains **3,091,024 customer reviews** and includes information about products, customers, ratings, review content, and purchasing information.
+
+The dataset contains fifteen variables, including:
+
+| Variable | Description |
+|-----------|-------------|
+| marketplace | Marketplace location |
+| customer_id | Customer identifier |
+| review_id | Review identifier |
+| product_id | Product identifier |
+| product_title | Product name |
+| product_category | Product category |
+| star_rating | Customer rating (1–5 stars) |
+| helpful_votes | Number of helpful votes |
+| total_votes | Total votes |
+| verified_purchase | Whether the purchase was verified |
+| review_headline | Review title |
+| review_body | Review content |
+| review_date | Review date |
+
+## Data Preparation
+
+Before analysis, several preprocessing steps were performed.
+
+First, missing values were checked and removed. The dataset contained no missing values after inspection, so all observations remained available for analysis.
+
+Second, customer ratings were checked to ensure that all ratings were within the valid range from one to five stars.
+
+Finally, because the original dataset contains more than three million observations, analyzing the entire dataset would require considerable computing resources. Therefore, a **random sample of 50,000 reviews** was selected for statistical analysis while maintaining sufficient representativeness.
+
+A new binary variable named **is_ai_recommend** was created to classify reviews into two groups:
+
+| Value | Meaning |
+|------:|---------|
+| 1 | AI Recommended |
+| 0 | Non-AI Recommended |
+
+This variable was used throughout the analysis to compare customer behavior between the two groups.
+
+# Method
+
+## Software
+
+All analyses were completed using Python.
+
+The following Python libraries were used during the project:
+
+| Library | Purpose |
+|----------|---------|
+| pandas | Data cleaning and processing |
+| numpy | Numerical computation |
+| matplotlib | Data visualization |
+| scipy | Statistical analysis |
+
+## Research Procedure
+
+The research process consisted of the following steps:
+
+1. Load the Amazon review dataset.
+2. Inspect the dataset structure.
+3. Remove missing or invalid observations.
+4. Randomly sample 50,000 reviews.
+5. Create the AI recommendation grouping variable.
+6. Calculate descriptive statistics.
+7. Compare customer ratings between groups.
+8. Perform an independent sample t-test.
+9. Analyze the correlation between ratings and helpful votes.
+10. Summarize the findings.
+
+## Statistical Methods
+
+Three analytical methods were used in this project.
+
+### Descriptive Statistics
+
+Descriptive statistics were used to calculate the average customer rating, average helpful votes, and sample size for each group. These statistics provide an overall comparison between AI-recommended products and non-recommended products.
+
+### Independent Sample t-test
+
+An independent sample t-test was conducted to determine whether the difference in average customer ratings between the two groups was statistically significant.
+
+The hypotheses are:
+
+**Null hypothesis (H₀):**
+
+There is no significant difference in customer ratings between AI-recommended products and non-recommended products.
+
+**Alternative hypothesis (H₁):**
+
+There is a significant difference in customer ratings between AI-recommended products and non-recommended products.
+
+A significance level of **0.05** was adopted.
+
+### Correlation Analysis
+
+Pearson correlation analysis was used to evaluate the relationship between customer ratings and helpful votes.
+
+The correlation coefficient ranges from **−1 to 1**.
+
+- A value close to **1** indicates a strong positive relationship.
+- A value close to **−1** indicates a strong negative relationship.
+- A value close to **0** indicates little or no linear relationship.
+
+The correlation analysis helps determine whether higher customer ratings are associated with receiving more helpful votes.
+# Results
+
+## Dataset Overview
+
+After preprocessing, all valid observations were retained. Since the original dataset contained more than three million reviews, a random sample of **50,000** reviews was selected for analysis.
+
+Table 1 summarizes the distribution of the sampled reviews.
+
+| Item | Value |
+|------|------:|
+| Original Dataset Size | 3,091,024 |
+| Sample Size | 50,000 |
+| AI Recommended | 37,598 |
+| Non-AI Recommended | 12,402 |
+
+The sampled data provide sufficient observations for comparing customer ratings between AI-recommended and non-recommended products.
+
+## Descriptive Statistics
+
+The average customer rating and average number of helpful votes were calculated for both groups.
+
+| Indicator | AI Recommended | Non-AI Recommended |
+|-----------|---------------:|-------------------:|
+| Average Rating | 4.77 | 1.85 |
+| Average Helpful Votes | 1.55 | 2.37 |
+| Sample Size | 37,598 | 12,402 |
+
+The results show that AI-recommended products received substantially higher customer ratings than products that were not recommended.
+
+Interestingly, although AI-recommended products received much higher ratings, they received fewer helpful votes on average.
+
+One possible explanation is that customers are more likely to write detailed reviews for products with negative experiences, making those reviews receive more helpful votes from other users.
+
+## Independent Sample t-test
+
+To determine whether the observed difference in customer ratings was statistically significant, an independent sample t-test was performed.
+
+| Statistic | Value |
+|-----------|-------|
+| t-value | 362.41 |
+| p-value | < 0.001 |
+
+Because the p-value is much smaller than the significance level of 0.05, the null hypothesis is rejected.
+
+The analysis indicates that the average rating difference between AI-recommended and non-recommended products is statistically significant.
+
+This finding suggests that AI recommendation systems are associated with higher customer ratings.
+
+## Correlation Analysis
+
+Pearson correlation analysis was performed to investigate the relationship between customer ratings and helpful votes.
+
+| Variable | Correlation Coefficient |
+|----------|------------------------:|
+| Star Rating vs Helpful Votes | -0.03 |
+
+The correlation coefficient is very close to zero, indicating almost no linear relationship between customer ratings and the number of helpful votes.
+
+This result suggests that highly rated products do not necessarily receive more helpful votes from customers.
+
+# Discussion
+
+The results indicate that AI recommendation systems may positively influence customer satisfaction.
+
+Products classified as AI recommended achieved an average rating of **4.77**, compared with **1.85** for non-recommended products.
+
+The statistical test confirmed that this difference is highly significant.
+
+These findings suggest that AI recommendation systems can improve the shopping experience by helping customers discover products that better match their interests and preferences.
+
+However, helpful votes showed a different pattern. AI-recommended products received fewer helpful votes than non-recommended products. This may occur because dissatisfied customers often write longer and more detailed reviews, attracting more attention from other users.
+
+Overall, the findings support the idea that AI recommendation systems can improve customer satisfaction, although they may not increase customer engagement in terms of review helpfulness.
+
+# Limitations and Future Work
+
+## Limitations
+
+This project has several limitations.
+
+First, the variable **is_ai_recommend** was created for analysis rather than obtained directly from Amazon's recommendation system. Therefore, it serves only as an approximate indicator of AI recommendation.
+
+Second, only a random sample of 50,000 reviews was analyzed instead of the complete dataset. Although the sample is large enough for statistical analysis, using the full dataset may provide more accurate results.
+
+Third, customer ratings may be affected by many additional factors, including product quality, brand reputation, price, shipping experience, and customer expectations. These variables were not included in this project.
+
+Finally, only basic statistical methods were applied. More advanced machine learning models could provide deeper insights into customer behavior.
+
+## Future Work
+
+Future studies could improve this project in several ways.
+
+First, researchers could analyze the complete Amazon review dataset instead of using a sample.
+
+Second, additional variables such as product category, verified purchase status, review length, and review sentiment could be incorporated into the analysis.
+
+Third, natural language processing techniques could be applied to analyze customer review texts and measure customer sentiment more accurately.
+
+Finally, future research could compare recommendation systems across multiple e-commerce platforms, such as Amazon, Alibaba, and eBay.
+
+# Conclusion
+
+This project investigated the relationship between AI recommendation systems and customer ratings using Amazon customer review data.
+
+The results show that AI-recommended products received significantly higher customer ratings than non-recommended products.
+
+The independent sample t-test confirmed that the difference was statistically significant, while correlation analysis indicated little relationship between customer ratings and helpful votes.
+
+Overall, the findings suggest that AI recommendation systems can improve customer satisfaction by recommending products that better match customer preferences.
+
+Although the project has several limitations, it demonstrates how data analysis can be used to evaluate the impact of AI in modern e-commerce.
+
+## Teamwork
+
+### Dou Yuhan
+
+- Selected the research topic.
+- Wrote the project report.
+- Organized the report structure and discussion.
+
+### Yang Haoyuxuan
+
+- Designed the presentation slides (PPT).
+- Wrote the project presentation script.
+- Assisted in organizing the project materials.
+
+## Use of AI Tools
+
+The following AI tools were used during this project:
+
+**Doubao**
+
+- Assisted with Python programming.
+- Helped debug the code.
+- Assisted with data preprocessing and statistical analysis.
+
+**ChatGPT**
+
+- Assisted with report writing.
+- Improved English grammar and academic expression.
+- Helped organize the Quarto report structure and formatting.
+
+All data analysis results, interpretations, and conclusions were carefully checked and verified by the project members before submission.
+
+# References
